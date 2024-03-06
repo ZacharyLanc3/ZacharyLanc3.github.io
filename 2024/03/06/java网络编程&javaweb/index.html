@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>java网络编程和javaweb</title>
+<meta name="keywords" content="java网络编程和javaweb, zz&#39;s blog">
+<meta name="description" content="java网络编程IP地址一个IP地址用于唯一标识一个网络接口（Network Interface）
+网络模型
+应用层，提供应用程序之间的通信；
+表示层：处理数据格式，加解密等等；
+会话层：负责建立和维护会话；
+传输层：负责提供端到端的可靠传">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="java网络编程和javaweb">
+<meta property="og:description" content="java网络编程IP地址一个IP地址用于唯一标识一个网络接口（Network Interface）
+网络模型
+应用层，提供应用程序之间的通信；
+表示层：处理数据格式，加解密等等；
+会话层：负责建立和维护会话；
+传输层：负责提供端到端的可靠传">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ZacharyLanc3.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ZacharyLanc3.github.io">
+        <h1 class="site-title">zz&#39;s blog</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">java网络编程和javaweb</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2024-03-06</span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h4 id="java网络编程"><a href="#java网络编程" class="headerlink" title="java网络编程"></a>java网络编程</h4><h5 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h5><p>一个IP地址用于唯一标识一个网络接口（Network Interface）</p>
+<h5 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h5><ul>
+<li>应用层，提供应用程序之间的通信；</li>
+<li>表示层：处理数据格式，加解密等等；</li>
+<li>会话层：负责建立和维护会话；</li>
+<li>传输层：负责提供端到端的可靠传输；</li>
+<li>网络层：负责根据目标地址选择路由来传输数据；</li>
+<li>链路层和物理层负责把数据进行分片并且真正通过物理网络传输，例如，无线网、光纤等。</li>
+</ul>
+<h5 id="常用协议"><a href="#常用协议" class="headerlink" title="常用协议"></a>常用协议</h5><ul>
+<li>IP协议只负责发数据包，不保证顺序和正确性。</li>
+<li>TCP协议负责控制数据包传输，它在传输数据之前需要先建立连接，建立连接后才能传输数据，传输完后还需要断开连接。TCP协议之所以能保证数据的可靠传输，是通过接收确认、超时重传这些机制实现的。并且，TCP协议允许双向通信，即通信双方可以同时发送和接收数据。</li>
+<li>许多高级协议都是建立在TCP协议之上的，例如HTTP、SMTP等。</li>
+<li>UDP协议（User Datagram Protocol）是一种数据报文协议，它是无连接协议，不保证可靠传输。因为UDP协议在通信前不需要建立连接，因此它的传输效率比TCP高，而且UDP协议比TCP协议要简单得多。</li>
+</ul>
+<h5 id="TCP编程"><a href="#TCP编程" class="headerlink" title="TCP编程"></a>TCP编程</h5><h6 id="Socket："><a href="#Socket：" class="headerlink" title="Socket："></a>Socket：</h6><p>Socket是一个抽象概念，一个应用程序通过一个Socket来建立一个远程连接，而Socket内部通过TCP&#x2F;IP协议把数据传输到网络。一个Socket就是由IP地址和端口号（范围是0～65535）组成，可以把Socket简单理解为IP地址加端口号。</p>
+<ul>
+<li>对服务器端来说，它的Socket是指定的IP地址和指定的端口号；</li>
+<li>对客户端来说，它的Socket是它所在计算机的IP地址和一个由操作系统分配的随机端口号。</li>
+</ul>
+<h6 id="tcp编程使用socket模型"><a href="#tcp编程使用socket模型" class="headerlink" title="tcp编程使用socket模型"></a>tcp编程使用socket模型</h6><ul>
+<li>服务器端用<code>ServerSocket</code>监听指定端口；</li>
+<li>客户端使用<code>Socket(InetAddress, port)</code>连接服务器；</li>
+<li>服务器端用<code>accept()</code>接收连接并返回<code>Socket</code>；</li>
+<li>双方通过<code>Socket</code>打开<code>InputStream</code>&#x2F;<code>OutputStream</code>读写数据；</li>
+<li>服务器端通常使用多线程同时处理多个客户端连接，利用线程池可大幅提升效率；</li>
+<li><code>flush()</code>用于强制输出缓冲区到网络。</li>
+</ul>
+<h5 id="UDP编程"><a href="#UDP编程" class="headerlink" title="UDP编程"></a>UDP编程</h5><p>使用UDP协议通信时，服务器和客户端双方无需建立连接：</p>
+<ul>
+<li>服务器端用<code>DatagramSocket(port)</code>监听端口；</li>
+<li>客户端使用<code>DatagramSocket.connect()</code>指定远程地址和端口；</li>
+<li>双方通过<code>receive()</code>和<code>send()</code>读写数据；</li>
+<li><code>DatagramSocket</code>没有IO流接口，数据被直接写入<code>byte[]</code>缓冲区。</li>
+</ul>
+<h5 id="HTTP编程"><a href="#HTTP编程" class="headerlink" title="HTTP编程"></a>HTTP编程</h5><p>当浏览器希望访问某个网站时，浏览器和网站服务器之间首先建立TCP连接，且服务器总是使用<code>80</code>端口和加密端口<code>443</code>，然后，浏览器向服务器发送一个HTTP请求，服务器收到后，返回一个HTTP响应，并且在响应中包含了HTML的网页内容，这样，浏览器解析HTML后就可以给用户显示网页了</p>
+<p>HTTP请求的格式是固定的，它由HTTP Header和HTTP Body两部分构成。</p>
+<ol>
+<li><p>第一行总是<code>请求方法 路径 HTTP版本</code>，例如，<code>GET / HTTP/1.1</code>表示使用<code>GET</code>请求，路径是<code>/</code>，版本是<code>HTTP/1.1</code>。</p>
+</li>
+<li><p>后续的每一行都是固定的<code>Header: Value</code>格式，我们称为HTTP Header，服务器依靠某些特定的Header来识别客户端请求，例如：</p>
+<ul>
+<li>Host：表示请求的域名，因为一台服务器上可能有多个网站，因此有必要依靠Host来识别请求是发给哪个网站的；</li>
+<li>User-Agent：表示客户端自身标识信息，不同的浏览器有不同的标识，服务器依靠User-Agent判断客户端类型是IE还是Chrome，是Firefox还是一个Python爬虫；</li>
+<li>Accept：表示客户端能处理的HTTP响应格式，<code>*/*</code>表示任意格式，<code>text/*</code>表示任意文本，<code>image/png</code>表示PNG格式的图片；</li>
+<li>Accept-Language：表示客户端接收的语言，多种语言按优先级排序，服务器依靠该字段给用户返回特定语言的网页版本。</li>
+</ul>
+</li>
+</ol>
+<p>如果是<code>GET</code>请求，那么该HTTP请求只有HTTP Header，没有HTTP Body。如果是<code>POST</code>请求，那么该HTTP请求带有Body，以一个空行分隔。<code>POST</code>请求通常要设置<code>Content-Type</code>表示Body的类型，<code>Content-Length</code>表示Body的长度，这样服务器就可以根据请求的Header和Body做出正确的响应。</p>
+<p><code>GET</code>请求的参数必须附加在URL上，并以URLEncode方式编码</p>
+<p><code>POST</code>请求的参数就没有长度限制，因为<code>POST</code>请求的参数必须放到Body中。并且，<code>POST</code>请求的参数不一定是URL编码，可以按任意格式编码</p>
+<p>常见的发送JSON的<code>POST</code>请求如下：</p>
+<pre><code>  <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/login</span> <span class="meta">HTTP/1.1</span></span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/json</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>38</span><br><span class="line"></span><br><span class="line"><span class="language-json"><span class="punctuation">&#123;</span><span class="attr">&quot;username&quot;</span><span class="punctuation">:</span><span class="string">&quot;bob&quot;</span><span class="punctuation">,</span><span class="attr">&quot;password&quot;</span><span class="punctuation">:</span><span class="string">&quot;123456&quot;</span><span class="punctuation">&#125;</span></span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<p>HTTP响应也是由Header和Body两部分组成。</p>
+<p>一个典型的HTTP响应如下：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">HTTP/1.1</span> <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>text/html</span><br><span class="line"><span class="attribute">Content-Length</span><span class="punctuation">: </span>133251</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">...</span></span><br></pre></td></tr></table></figure>
+
+<p>响应的第一行总是<code>HTTP版本 响应代码 响应说明</code>，例如，<code>HTTP/1.1 200 OK</code>表示版本是<code>HTTP/1.1</code>，响应代码是<code>200</code>，响应说明是<code>OK</code>。客户端只依赖响应代码判断HTTP响应是否成功。HTTP有固定的响应代码：</p>
+<ul>
+<li>1xx：表示一个提示性响应，例如101表示将切换协议，常见于WebSocket连接；</li>
+<li>2xx：表示一个成功的响应，例如200表示成功，206表示只发送了部分内容；</li>
+<li>3xx：表示一个重定向的响应，例如301表示永久重定向，303表示客户端应该按指定路径重新发送请求；</li>
+<li>4xx：表示一个因为客户端问题导致的错误响应，例如400表示因为Content-Type等各种原因导致的无效请求，404表示指定的路径不存在；</li>
+<li>5xx：表示一个因为服务器问题导致的错误响应，例如500表示服务器内部故障，503表示服务器暂时无法响应</li>
+</ul>
+<h4 id="JAVAweb"><a href="#JAVAweb" class="headerlink" title="JAVAweb"></a>JAVAweb</h4><h5 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h5><ul>
+<li><p>由来：编写一个http服务器需要先编写基于多线程的TCP服务，然后在一个TCP连接中读取HTTP请求，发送HTTP响应，但是想要编写一个完善的http服务器需要考虑的点非常多，因此在JAVAEE平台中提供了Servlet API来处理HTTP请求，配合Web服务器实现Servlet API接口.</p>
+</li>
+<li><p>运行：在使用Maven导入Servlet API之后，打包出来的java程序是war程序，需要由能支持Servlet API的服务器来运行例如Tomcat、Jetty等。</p>
+</li>
+<li><p>使用：一个Web App就是由一个或者多个Servlet组成的，每个Servlet通过注解说明路径，处理GET、POST、PUT等请求时重写相应的doGet(),doPost()等方法即可。</p>
+</li>
+<li><p>关于多线程共用：对于每个请求，Web服务器会创建唯一的<code>HttpServletRequest</code>和<code>HttpServletResponse</code>实例，因此，<code>HttpServletRequest</code>和<code>HttpServletResponse</code>实例只有在当前处理线程中有效，它们总是局部变量，不存在多线程共享的问题。</p>
+</li>
+</ul>
+<h6 id="Servlet重定向"><a href="#Servlet重定向" class="headerlink" title="Servlet重定向"></a>Servlet重定向</h6><ul>
+<li><p>含义：重定向是指当浏览器请求一个URL时，服务器返回一个重定向指令，告诉浏览器地址已经变了，麻烦使用新的URL再重新发送新请求。</p>
+</li>
+<li><p>分类：重定向有两种：一种是302响应，称为临时重定向，一种是301响应，称为永久重定向。两者的区别是，如果服务器发送301永久重定向响应，浏览器会缓存<code>/hi</code>到<code>/hello</code>这个重定向的关联，下次请求<code>/hi</code>的时候，浏览器就直接发送<code>/hello</code>请求了。</p>
+</li>
+<li><p>目的：重定向的目的是当Web应用升级后，如果请求路径发生了变化，可以将原来的路径重定向到新路径，从而避免浏览器请求原路径找不到资源。</p>
+</li>
+<li><p>使用：</p>
+<p>HttpServletResponse<code>提供了快捷的</code>redirect()&#96;方法实现302重定向。如果要实现301永久重定向，可以这么写：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">resp.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY); <span class="comment">// 301</span></span><br><span class="line">resp.setHeader(<span class="string">&quot;Location&quot;</span>, <span class="string">&quot;/hello&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h6 id="Forward"><a href="#Forward" class="headerlink" title="Forward"></a>Forward</h6><p>Forward是指内部转发。当一个Servlet处理请求的时候，它可以决定自己不继续处理，而是转发给另一个Servlet处理。</p>
+<h5 id="Session和Cookie"><a href="#Session和Cookie" class="headerlink" title="Session和Cookie"></a>Session和Cookie</h5><p>HTTP协议是一个无状态协议，即Web应用程序无法区分收到的两个HTTP请求是否是同一个浏览器发出的。为了跟踪用户状态，服务器可以向浏览器分配一个唯一ID，并以Cookie的形式发送到浏览器，浏览器在后续访问时总是附带此Cookie，这样，服务器就可以识别用户身份。</p>
+<h6 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h6><p>这种基于唯一ID识别用户身份的机制称为Session。每个用户第一次访问服务器后，会自动获得一个Session ID。如果用户在一段时间内没有访问服务器，那么Session会自动失效，下次即使带着上次分配的Session ID访问，服务器也认为这是一个新用户，会分配新的Session ID。JavaEE的Servlet机制内建了对Session的支持。</p>
+<p>当一个用户登录成功后，我们就可以把这个用户的名字放入一个<code>HttpSession</code>对象，以便后续访问其他页面的时候，能直接从<code>HttpSession</code>取出用户名；服务器识别Session的关键就是依靠一个名为<code>JSESSIONID</code>的Cookie。在Servlet中第一次调用<code>req.getSession()</code>时，Servlet容器自动创建一个Session ID，然后通过一个名为<code>JSESSIONID</code>的Cookie发送给浏览器：</p>
+<h6 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h6><p>Servlet提供的<code>HttpSession</code>本质上就是通过一个名为<code>JSESSIONID</code>的Cookie来跟踪用户会话的。</p>
+<p>创建一个新Cookie时，除了指定名称和值以外，通常需要设置<code>setPath(&quot;/&quot;)</code>，浏览器根据此前缀决定是否发送Cookie。</p>
+<p>如果一个Cookie调用了<code>setPath(&quot;/user/&quot;)</code>，那么浏览器只有在请求以<code>/user/</code>开头的路径时才会附加此Cookie。</p>
+<p>通过<code>setMaxAge()</code>设置Cookie的有效期，单位为秒，最后通过<code>resp.addCookie()</code>把它添加到响应。如果访问的是https网页，还需要调用<code>setSecure(true)</code>，否则浏览器不会发送该Cookie。</p>
+<h4 id="JSP"><a href="#JSP" class="headerlink" title="JSP"></a>JSP</h4><p>JSP是一种文件以特殊格式存放一个HTML文件，其本质是就是一个Servlet但是不用配置映射路径，方便是不用在java文件中写html信息，但是缺点就是不能方便的在其中编写java类。现在已经很少使用。</p>
+<h5 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h5><p>JSP和java的Servlet优缺点刚好反过来了，于是出现了MVC结合这两者的优点。</p>
+<p>Servlet处理业务逻辑，而jsp文件只负责展示信息，从Servlet中取信息传递给jsp文件，jsp文件负责展示，这种设计模式成为MVC。</p>
+<p>但是这种模式仍不足，</p>
+<ul>
+<li>Servlet的接口仍然偏底层</li>
+<li>业务逻辑最好由纯粹java类实现，而不是在servlet中</li>
+<li>JSP对页面开发不友好</li>
+</ul>
+
+        </div>
+          
+        <div class="top-div">
+          
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2024/03/06/java%E5%8F%8D%E5%B0%84/">
+          <h3 class="post-title">
+            下一篇：java反射
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/f-dong" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>MySQL基本学习</title>
+<meta name="keywords" content="MySQL基本学习, zz&#39;s blog">
+<meta name="description" content="按照数据结构组织储存管理数据的仓库叫做数据库，每个数据有自己的 API 创建、访问、管理、搜索和复制所保存的数据。不直接将数据储存在文件中的原因是在文件中的数据速度较慢。
+MySQL是关系型数据库，具有以下特点：
+
+数据以表格的形式出现
+每">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="MySQL基本学习">
+<meta property="og:description" content="按照数据结构组织储存管理数据的仓库叫做数据库，每个数据有自己的 API 创建、访问、管理、搜索和复制所保存的数据。不直接将数据储存在文件中的原因是在文件中的数据速度较慢。
+MySQL是关系型数据库，具有以下特点：
+
+数据以表格的形式出现
+每">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ZacharyLanc3.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ZacharyLanc3.github.io">
+        <h1 class="site-title">zz&#39;s blog</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">MySQL基本学习</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2024-03-06</span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <p>按照数据结构组织储存管理数据的仓库叫做数据库，每个数据有自己的 API 创建、访问、管理、搜索和复制所保存的数据。不直接将数据储存在文件中的原因是在文件中的数据速度较慢。</p>
+<p>MySQL是关系型数据库，具有以下特点：</p>
+<ul>
+<li>数据以表格的形式出现</li>
+<li>每行为各种记录名称</li>
+<li>每列为记录名称所对应的数据域</li>
+<li>许多的行和列组成一张表单</li>
+<li>若干的表单组成database</li>
+</ul>
+<p>安装好后即可使用</p>
+<h5 id="连接至本机MySQL数据库"><a href="#连接至本机MySQL数据库" class="headerlink" title="连接至本机MySQL数据库"></a>连接至本机MySQL数据库</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+
+<h5 id="连接至指定数据库"><a href="#连接至指定数据库" class="headerlink" title="连接至指定数据库"></a>连接至指定数据库</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -h 主机名 -u 用户名 -p</span><br></pre></td></tr></table></figure>
+
+<h5 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">user</span> </span><br><span class="line">          (host, <span class="keyword">user</span>, password, </span><br><span class="line">           select_priv, insert_priv, update_priv) </span><br><span class="line">           <span class="keyword">VALUES</span> (<span class="string">&#x27;localhost&#x27;</span>, <span class="string">&#x27;guest&#x27;</span>, </span><br><span class="line">           PASSWORD(<span class="string">&#x27;guest123&#x27;</span>), <span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;Y&#x27;</span>, <span class="string">&#x27;Y&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>或</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">GRANT</span> <span class="keyword">SELECT</span>,<span class="keyword">INSERT</span>,<span class="keyword">UPDATE</span>,<span class="keyword">DELETE</span>,<span class="keyword">CREATE</span>,<span class="keyword">DROP</span></span><br><span class="line">    <span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">ON</span> TUTORIALS.<span class="operator">*</span></span><br><span class="line">    <span class="operator">-</span><span class="operator">&gt;</span> <span class="keyword">TO</span> <span class="string">&#x27;zara&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span></span><br><span class="line">    <span class="operator">-</span><span class="operator">&gt;</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;zara123&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="显示数据库"><a href="#显示数据库" class="headerlink" title="显示数据库"></a>显示数据库</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">SHOW</span> DATABASES；</span><br></pre></td></tr></table></figure>
+
+<h5 id="显示指定数据库的所有表"><a href="#显示指定数据库的所有表" class="headerlink" title="显示指定数据库的所有表"></a>显示指定数据库的所有表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> use 数据库名;</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">SHOW</span> TABLES;</span><br></pre></td></tr></table></figure>
+
+<h5 id="显示数据表的属性"><a href="#显示数据表的属性" class="headerlink" title="显示数据表的属性"></a>显示数据表的属性</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">SHOW</span> COLUMNS <span class="keyword">FROM</span> runoob_tbl;</span><br></pre></td></tr></table></figure>
+
+<h5 id="显示数据表的详细索引信息"><a href="#显示数据表的详细索引信息" class="headerlink" title="显示数据表的详细索引信息"></a>显示数据表的详细索引信息</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">SHOW</span> INDEX <span class="keyword">FROM</span> runoob_tbl;</span><br></pre></td></tr></table></figure>
+
+<h5 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE 数据库名;</span><br></pre></td></tr></table></figure>
+
+<h5 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> database <span class="operator">&lt;</span>数据库名<span class="operator">&gt;</span>;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+          
+        <div class="top-div">
+          
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2024/03/06/Spring%E5%AD%A6%E4%B9%A0/">
+          <h3 class="post-title">
+            下一篇：Spring学习
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/f-dong" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+

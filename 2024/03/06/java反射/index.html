@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+
+    
+<script>!function(){var e=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,t=localStorage.getItem("use-color-scheme")||"auto";("dark"===t||e&&"light"!==t)&&document.documentElement.classList.toggle("dark",!0)}()</script>
+    
+
+<meta charset="utf-8" >
+
+<title>java反射</title>
+<meta name="keywords" content="java反射, zz&#39;s blog">
+<meta name="description" content="Class类JVM会为每个加载的类创建一个Class实例，Class实例中包含该类的所有信息
+我们可以通过调用Class类中的方法来获取该类的信息
+获取Class实例
+直接通过静态变量获取
+使用实例变量的getclass()方法
+静态方法C">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="java反射">
+<meta property="og:description" content="Class类JVM会为每个加载的类创建一个Class实例，Class实例中包含该类的所有信息
+我们可以通过调用Class类中的方法来获取该类的信息
+获取Class实例
+直接通过静态变量获取
+使用实例变量的getclass()方法
+静态方法C">
+
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="stylesheet" href="/style/main.css">
+
+  <meta name="generator" content="Hexo 7.1.1"></head>
+  <body>
+    <div id="app" class="main">
+
+<div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="http://ZacharyLanc3.github.io">
+        <img class="avatar" src="/images/avatar.png" alt="logo" width="32px" height="32px">
+      </a>
+      <a href="http://ZacharyLanc3.github.io">
+        <h1 class="site-title">zz&#39;s blog</h1>
+      </a>
+    </div>
+    <div class="right">
+        <i class="icon menu-switch icon-menu-outline" ></i>
+    </div>
+  </div>
+</div>
+
+<div class="menu-container" style="height: 0;opacity: 0;">
+<nav class="menu-list">
+  
+    
+      <a href="/" class="menu purple-link">
+        首页
+      </a>
+    
+  
+    
+      <a href="/tags" class="menu purple-link">
+        标签
+      </a>
+    
+  
+    
+      <a href="/archives" class="menu purple-link">
+        归档
+      </a>
+    
+  
+    
+      <a href="/about" class="menu purple-link">
+        关于
+      </a>
+    
+  
+</nav>
+</div>
+
+
+
+  <div class="content-container">
+    <div class="post-detail">
+      
+      <h2 class="post-title">java反射</h2>
+      <div class="post-info post-detail-info">
+        <span><i class="icon icon-calendar-outline"></i> 2024-03-06</span>
+        
+      </div>
+      <div class="post-content-wrapper">
+        <div class="post-content">
+          <h4 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h4><p>JVM会为每个加载的类创建一个Class实例，Class实例中包含该类的所有信息</p>
+<p>我们可以通过调用Class类中的方法来获取该类的信息</p>
+<h5 id="获取Class实例"><a href="#获取Class实例" class="headerlink" title="获取Class实例"></a>获取Class实例</h5><ul>
+<li>直接通过静态变量获取</li>
+<li>使用实例变量的getclass()方法</li>
+<li>静态方法Class.forName(“完整类名”)</li>
+</ul>
+<h5 id="获取字段及信息"><a href="#获取字段及信息" class="headerlink" title="获取字段及信息"></a>获取字段及信息</h5><ol>
+<li>获取字段<ul>
+<li>Field getField(name)：根据字段名获取某个public的field（包括父类）</li>
+<li>Field getDeclaredField(name)：根据字段名获取当前类的某个field（不包括父类）</li>
+<li>Field[] getFields()：获取所有public的field（包括父类）</li>
+<li>Field[] getDeclaredFields()：获取当前类的所有field（不包括父类）</li>
+</ul>
+</li>
+<li>通过字段获取字段信息<ul>
+<li><code>getName()</code>：返回字段名称，例如，<code>&quot;name&quot;</code>；</li>
+<li><code>getType()</code>：返回字段类型，也是一个<code>Class</code>实例，例如，<code>String.class</code>；</li>
+<li><code>getModifiers()</code>：返回字段的修饰符，它是一个<code>int</code>，不同的bit表示不同的含义。</li>
+</ul>
+</li>
+</ol>
+<h5 id="获取方法及调用"><a href="#获取方法及调用" class="headerlink" title="获取方法及调用"></a>获取方法及调用</h5><ol>
+<li><p>获取方法</p>
+<ul>
+<li><code>Method getMethod(name, Class...)</code>：获取某个<code>public</code>的<code>Method</code>（包括父类）</li>
+<li><code>Method getDeclaredMethod(name, Class...)</code>：获取当前类的某个<code>Method</code>（不包括父类）</li>
+<li><code>Method[] getMethods()</code>：获取所有<code>public</code>的<code>Method</code>（包括父类）</li>
+<li><code>Method[] getDeclaredMethods()</code>：获取当前类的所有<code>Method</code>（不包括父类）</li>
+</ul>
+</li>
+<li><p>获取方法信息</p>
+<ul>
+<li><code>getName()</code>：返回方法名称，例如：<code>&quot;getScore&quot;</code>；</li>
+<li><code>getReturnType()</code>：返回方法返回值类型，也是一个Class实例，例如：<code>String.class</code>；</li>
+<li><code>getParameterTypes()</code>：返回方法的参数类型，是一个Class数组，例如：<code>&#123;String.class, int.class&#125;</code>；</li>
+<li><code>getModifiers()</code>：返回方法的修饰符，它是一个<code>int</code>，不同的bit表示不同的含义。</li>
+</ul>
+</li>
+<li><p>调用方法</p>
+<p>使用Methord实例的invoke方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;Hello world&quot;</span>;</span><br><span class="line"><span class="comment">// 获取String substring(int)方法，参数为int:</span></span><br><span class="line"><span class="type">Method</span> <span class="variable">m</span> <span class="operator">=</span> String.class.getMethod(<span class="string">&quot;substring&quot;</span>, <span class="type">int</span>.class);</span><br><span class="line"><span class="comment">// 在s对象上调用该方法并获取结果:</span></span><br><span class="line"><span class="type">String</span> <span class="variable">r</span> <span class="operator">=</span> (String) m.invoke(s, <span class="number">6</span>);</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ul>
+<li><p>若Methor是静态方法则invoke的第一个参数是null</p>
+</li>
+<li><p>调用非public方法，我们通过<code>Method.setAccessible(true)</code>允许其调用</p>
+</li>
+<li><p>使用反射调用方法时，仍然遵循多态原则：即总是调用实际类型的覆写方法（如果存在）</p>
+</li>
+</ul>
+</li>
+</ol>
+
+        </div>
+          
+        <div class="top-div">
+          
+        </div>
+          
+      </div>
+    </div>
+
+    
+      <div class="next-post">
+        <a class="purple-link" href="/2024/03/06/Git%E7%9A%84%E4%BD%BF%E7%94%A8%E5%AD%A6%E4%B9%A0/">
+          <h3 class="post-title">
+            下一篇：Git的使用学习
+          </h3>
+        </a>
+      </div>
+    
+  </div>
+
+
+
+
+
+
+
+
+
+
+<footer>
+<div class="site-footer">
+  <div class="social-container">
+    
+      
+        <a aria-label="跳转至github" href="https://github.com/f-dong" target="_blank">
+          <i class="icon icon-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  
+    Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> <a href="https://github.com/f-dong/hexo-theme-minimalism" target="_blank">Theme</a>
+  
+  
+  
+  
+  
+  
+</div>
+</footer>
+
+
+      </div>
+    </div>
+    
+<script id="hexo-configurations"> window.theme_config = {"image":{"lazyload_enable":true,"photo_zoom":"simple-lightbox"}}; window.is_post = true; </script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+  </body>
+</html>
+
